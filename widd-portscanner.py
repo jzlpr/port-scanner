@@ -1,5 +1,5 @@
 import sys
-from nmapthon2 import NmapScan
+import nmapthon2 as nm2
 
 def run_port_scanner(target_ip, ports="1-1024"):
     print(f"[*] Initializing Nmap scan against target: {target_ip} (Ports: {ports})")
@@ -7,7 +7,7 @@ def run_port_scanner(target_ip, ports="1-1024"):
     try:
         # Initialize and run an Nmap scan (SYN scan by default with service detection if needed)
         # Note: Depending on privileges, SYN scans (-sS) require root/administrator permissions.
-        scan = NmapScan(targets=target_ip, ports=ports, arguments="-sS -T4")
+        scan = nm2.NmapScanner(targets=target_ip, ports=ports, arguments="-sS -T4")
         
         # Check if the scan completed successfully
         if not scan.is_successful():
