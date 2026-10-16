@@ -10,7 +10,7 @@ def run_port_scanner(target_ip, ports="1-1024"):
         scanner = nm2.NmapScanner()
 
         # Execute the scan matching standard nmapthon2 implementation
-        result = scanner.scan(targets=target_ip, ports=ports, arguments="-sS -sV -T4")
+        result = scanner.scan(targets=target_ip, ports=ports, arguments="-T4")
 
         if not result:
             print("[-] Scan failed or returned no results.")
