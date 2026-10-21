@@ -124,7 +124,7 @@ Host: 192.168.1.1 (router.local) - Status: up
 
 ```text
 port-scanner/
-├── 🐍 port-scanner3.py    # ⭐ Main scanner script
+├── 🐍 port-scanner.py    # ⭐ Main scanner script
 ├── 📁 iterations/         # 🗂️ Earlier versions kept for history
 │   ├── 🐍 port-scanner.py
 │   ├── 🐍 port-scanner2.py

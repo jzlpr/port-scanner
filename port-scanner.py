@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ============================================================================
-#  port-scanner3.py — Network Port Scanner built on top of Nmap / nmapthon2
+#  port-scanner.py — Network Port Scanner built on top of Nmap / nmapthon2
 # ----------------------------------------------------------------------------
 #  Purpose : Prompts the user for a target and a port range, runs an Nmap
 #            scan through the nmapthon2 wrapper, and pretty-prints every

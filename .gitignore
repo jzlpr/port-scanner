@@ -3,6 +3,8 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+rundown.md
+
 # C extensions
 *.so
 
