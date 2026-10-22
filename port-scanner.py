@@ -33,6 +33,7 @@ def run_port_scanner(target_ip, ports="1-1024"):
 
         # Guard clause: if the scan returned nothing (None / empty), report failure and exit the function early.
         if not result:
+
             # Inform the user (on stdout) that the scan produced no usable results.
             print("[-] Scan failed or returned no results.")
             # Stop processing - there is nothing to iterate over.
