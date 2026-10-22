@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 # ============================================================================
-#  port-scanner.py — Network Port Scanner built on top of Nmap / nmapthon2
+#  port-scanner.py - Network Port Scanner built on top of Nmap / nmapthon2
 # ----------------------------------------------------------------------------
 #  Purpose : Prompts the user for a target and a port range, runs an Nmap
 #            scan through the nmapthon2 wrapper, and pretty-prints every
 #            discovered host together with its open TCP ports and services.
 #  Author  : port-scanner project
-#  Usage   : python port-scanner3.py   (interactive — asks for input)
+#  Usage   : python port-scanner.py   (interactive - asks for input)
 #  Requires: nmap binary installed on the system + `pip install nmapthon2`
 # ============================================================================
 
-# Import the `sys` module — used here to write error messages to stderr (line: error handler below).
+# Import the `sys` module - used here to write error messages to stderr (line: error handler below).
 import sys
 
-# Import the third-party `nmapthon2` library (aliased as `nm2`) — a Python wrapper around the Nmap scanner binary.
+# Import the third-party `nmapthon2` library (aliased as `nm2`) - a Python wrapper around the Nmap scanner binary.
 import nmapthon2 as nm2
 
 
@@ -24,29 +24,29 @@ def run_port_scanner(target_ip, ports="1-1024"):
 
     # Begin a try/except block so any failure inside the scan (missing nmap, bad host, etc.) is handled gracefully.
     try:
-        # Instantiate an NmapScanner object from nmapthon2 — this is the reusable wrapper around the nmap binary.
+        # Instantiate an NmapScanner object from nmapthon2 - this is the reusable wrapper around the nmap binary.
         scanner = nm2.NmapScanner()
 
         # Execute the scan: pass the target host, the port specification, and `-T4` (Nmap's "aggressive" timing template).
-        # The returned `result` is an NmapScanResult — an iterable of Host objects discovered on the network.
+        # The returned `result` is an NmapScanResult - an iterable of Host objects discovered on the network.
         result = scanner.scan(targets=target_ip, ports=ports, arguments="-T4")
 
         # Guard clause: if the scan returned nothing (None / empty), report failure and exit the function early.
         if not result:
             # Inform the user (on stdout) that the scan produced no usable results.
             print("[-] Scan failed or returned no results.")
-            # Stop processing — there is nothing to iterate over.
+            # Stop processing - there is nothing to iterate over.
             return
 
         # If we reach this point the scan succeeded; print a confirmation followed by a blank line for spacing.
         print("[+] Scan completed successfully.\n")
 
-        # Loop over every Host object contained in the scan result — one iteration per discovered machine.
+        # Loop over every Host object contained in the scan result - one iteration per discovered machine.
         for host in result:
             # Resolve the host's IPv4 address; fall back to `ip`, and finally to the string form of the object.
             host_ip = getattr(host, "ipv4", None) or getattr(host, "ip", str(host))
 
-            # Try to obtain a hostname for this host — the API call may raise, so wrap it defensively.
+            # Try to obtain a hostname for this host - the API call may raise, so wrap it defensively.
             try:
                 # Call hostnames() which returns a list of hostnames discovered via reverse-DNS / Nmap.
                 names = host.hostnames()
