@@ -77,7 +77,7 @@ pip install nmapthon2
 ### 4️⃣ Run the scanner ▶️
 
 ```bash
-python port-scanner3.py
+python port-scanner.py
 ```
 
 ### 💬 Example session
